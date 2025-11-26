@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+      - ./src:/app/src        # только код, не трогаем структуру
+    environment:
+      - DATABASE_URL=sqlite:////data/crm.db
+    # command не переопределяем — берётся из Dockerfile
